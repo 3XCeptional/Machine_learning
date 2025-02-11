@@ -19,7 +19,7 @@
 
 ### Unsupervised Machine Learning Algorithms
 
-Unsupervised learning involves training a model on data without explicit labels. The goal is to find patterns or structures in the data. Common unsupervised algorithms include:
+**Unsupervised learning** is like exploring without a map. You give the algorithm unlabeled data, and it tries to find hidden patterns, structures, or groupings on its own. It's used for tasks like clustering, dimensionality reduction, and anomaly detection, where the goal is to understand the inherent structure of the data. Common unsupervised algorithms include:
 
 1. **[K-Means Clustering](Supervised_vs_Unsupervised/Unsupervised/kmeans.md)**
 2. **Hierarchical Clustering**
