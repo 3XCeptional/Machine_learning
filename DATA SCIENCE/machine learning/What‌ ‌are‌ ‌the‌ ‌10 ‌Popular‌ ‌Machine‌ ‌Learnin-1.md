@@ -30,6 +30,8 @@ Here’s a set of clear, concise notes on each topic with easy-to-understand exp
 - **Example**: Predicting if an email is spam or not (1 = spam, 0 = not spam).
 - **Key Term**: **Sigmoid Function** – Converts linear predictions into probabilities, helping in classification.
 
+[Dive deeper into Logistic Regression](./understanding_logistic_regression.md)
+
 ---
 
 ### **3. SVM (Support Vector Machine)**
