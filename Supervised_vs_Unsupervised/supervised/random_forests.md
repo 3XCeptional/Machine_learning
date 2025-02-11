@@ -85,7 +85,7 @@ This enhanced code snippet provides a more practical and insightful example of u
 
 **Suggestion:**
 
-[Next Page Placeholder]
+Next up: [K-Nearest Neighbors (KNN)](k_nearest_neighbors.md)
 
 ---
 
