@@ -48,6 +48,8 @@
 
 ### Common Deep Learning Algorithms
 
+These are some fundamental algorithms and techniques that are commonly used in the context of deep learning:
+
 1. **Backpropagation (for training neural networks)**
 2. **Stochastic Gradient Descent (SGD)**
 3. **Adam Optimizer**
