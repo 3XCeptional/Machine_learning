@@ -71,11 +71,41 @@ In real-world datasets, data is often not perfectly linearly separable. To handl
 
 ## Kernels in SVM
 
-[Explain the concept of Kernels and discuss different types of kernels:]
+**Kernels** are a central concept in Support Vector Machines that enable SVM to efficiently handle **non-linear classification and regression**. Kernels provide a way to compute the **dot product** between vectors in a high-dimensional (possibly infinite-dimensional) feature space without explicitly computing the transformation into that space. This is known as the "kernel trick."
+
+**In essence, kernels allow SVM to find non-linear decision boundaries by implicitly mapping the input data into higher-dimensional spaces where linear separation is possible.**
+
+Here are some common types of kernels used in SVM:
 
 ### Linear Kernel
 
-[Explain Linear Kernel and when it's appropriate.]
+**Definition:** The linear kernel is the simplest kernel. It is essentially the dot product of two input vectors and is defined as:
+
+\( K(x_i, x_j) = x_i^T x_j \)
+
+Where:
+
+*   \( K(x_i, x_j) \) is the kernel function for input vectors \( x_i \) and \( x_j \).
+*   \( x_i^T x_j \) is the dot product between \( x_i \) and \( x_j \).
+
+**Explanation:**
+
+*   **No Transformation:** The linear kernel performs no transformation of the input features. It operates in the original feature space.
+*   **Linear Hyperplane:** When using a linear kernel, SVM finds a linear hyperplane to separate the classes, just like in standard linear classifiers.
+*   **Efficiency:** Linear kernels are computationally efficient, especially for high-dimensional data, as they avoid complex transformations.
+
+**When to Use Linear Kernel:**
+
+*   **Linearly Separable Data:** When you expect the data to be linearly separable or approximately linearly separable in the original feature space.
+*   **High-Dimensional Data:** Effective for high-dimensional data where linear models often perform well and where computational efficiency is important.
+*   **Large Datasets:** Linear SVMs are faster to train on large datasets compared to kernel SVMs with non-linear kernels.
+*   **Text Classification and Document Classification:** Linear kernels are often effective in text and document classification tasks, where feature spaces can be very high-dimensional (e.g., bag-of-words features).
+
+**Limitations:**
+
+*   **Cannot Handle Non-linear Data:** Linear kernels cannot capture non-linear relationships between features and the target variable. If the data is inherently non-linear, a linear kernel will result in underfitting.
+
+**In summary, the linear kernel is a good starting point for SVM, especially when dealing with high-dimensional data or when a linear decision boundary is expected to be sufficient.** For non-linear datasets, other kernels like Polynomial or RBF are more appropriate.
 
 ### Polynomial Kernel
 
