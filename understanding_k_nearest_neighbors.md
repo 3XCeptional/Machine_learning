@@ -113,6 +113,32 @@ For two points \( x = (2, 3) \) and \( y = (5, 7) \) in a 2D plane, the Euclidea
 
 ### Other Distance Metrics (Briefly mention if relevant, e.g., Hamming, Cosine)
 
+Besides Euclidean, Manhattan, and Minkowski distances, there are other distance metrics that can be used with KNN, depending on the nature of the data:
+
+1.  **Hamming Distance:**
+    *   **Definition:** Hamming distance measures the **number of positions at which two strings (or binary vectors) are different.** It's primarily used for categorical data, especially binary data.
+    *   **Use Case:** Commonly used in text processing (e.g., comparing binary feature vectors representing the presence or absence of words) and bioinformatics (e.g., comparing DNA sequences).
+    *   **Example:** For two binary vectors `x = [1, 0, 1, 0]` and `y = [1, 1, 1, 0]`, the Hamming distance is 1 (because they differ at only one position - the second element).
+
+2.  **Cosine Distance and Cosine Similarity:**
+    *   **Definition:** Cosine distance measures the **cosine of the angle between two vectors**. Cosine similarity, which is often used interchangeably, is \( 1 - \text{cosine distance} \). They are particularly useful when dealing with **high-dimensional data** and when the magnitude of vectors is not as important as their direction or orientation.
+    *   **Formula (Cosine Similarity):** 
+        \( \text{Cosine Similarity} = \frac{x \cdot y}{||x|| \ ||y||} \)
+        where \( x \cdot y \) is the dot product of vectors \( x \) and \( y \), and \( ||x|| \) and \( ||y|| \) are their magnitudes (Euclidean norms). Cosine distance is then \( 1 - \text{Cosine Similarity} \).
+    *   **Use Case:** Widely used in text mining and information retrieval (e.g., document similarity, recommendation systems) and for gene expression data analysis. It's effective for data represented as sparse vectors.
+    *   **Range:** Cosine similarity ranges from -1 to 1, with 1 indicating identical vectors, 0 indicating orthogonal vectors (no similarity), and -1 indicating diametrically opposite vectors. Cosine distance ranges from 0 to 2.
+
+**Choosing a Distance Metric:**
+
+The choice of distance metric in KNN should be guided by:
+
+*   **Data Type:** 
+    *   **Continuous, Real-valued Features:** Euclidean, Minkowski, Manhattan distances are common choices.
+    *   **Binary or Categorical Features:** Hamming distance, Jaccard distance, or specialized metrics for categorical data.
+    *   **High-Dimensional Sparse Data (e.g., text):** Cosine distance/similarity is often effective.
+*   **Problem Domain:** Consider what "distance" or "similarity" means in your specific application.
+*   **Experimentation:** It's often a good practice to experiment with different distance metrics and evaluate their impact on KNN performance using cross-validation to choose the best one for your problem.
+
 ## Choosing the Right K Value
 
 [Explain the importance of choosing the right K value and its impact on bias and variance. Discuss methods for selecting optimal K:]
