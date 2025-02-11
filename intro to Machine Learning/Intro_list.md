@@ -7,7 +7,7 @@ Supervised learning involves training a model on labeled data, where the input d
 3. **[Support Vector Machines (SVM)](Supervised_vs_Unsupervised/supervised/support_vector_machines.md)**
 4. **[Decision Trees](intro%20to%20Machine%20Learning/DecisionTree_and_%20DecisionTreeRegressor.md)**
 5. **[Random Forests](Supervised_vs_Unsupervised/supervised/random_forests.md)**
-6. **K-Nearest Neighbors (KNN)**
+6. **[K-Nearest Neighbors (KNN)](Supervised_vs_Unsupervised/supervised/k_nearest_neighbors.md)**
 7. **Naive Bayes**
 8. **Gradient Boosting Machines (GBM)**
    - **XGBoost**
