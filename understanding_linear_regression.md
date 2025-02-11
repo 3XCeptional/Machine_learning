@@ -177,7 +177,39 @@ Where:
 
 ## Assumptions of Linear Regression
 
-[Discuss the key assumptions of linear regression (linearity, independence, homoscedasticity, normality of residuals, no multicollinearity) and why they are important.]
+Linear regression, while powerful, relies on several key assumptions to ensure the validity and reliability of its results. Violating these assumptions can lead to biased or inefficient estimates. The main assumptions are:
+
+1.  **Linearity:**
+    *   **Assumption:** The relationship between the independent and dependent variables is linear. This means that the change in the dependent variable for a unit change in the independent variable is constant across all values of the independent variable.
+    *   **Importance:** If the relationship is non-linear, applying a linear regression model will result in a poor fit and inaccurate predictions.
+    *   **Detection:** Check scatter plots of dependent vs. independent variables. Residual plots can also help identify non-linearity.
+    *   **Remedies:** Transformations of variables (e.g., logarithmic, polynomial) or using non-linear regression models.
+
+2.  **Independence of Errors (Residuals):**
+    *   **Assumption:** The errors (residuals) are independent of each other. This is particularly important in time series data where errors in one time period should not be correlated with errors in another period.
+    *   **Importance:** Correlated errors can lead to unreliable estimates of standard errors and affect hypothesis testing.
+    *   **Detection:** Check for autocorrelation using tests like the Durbin-Watson test for time series data.
+    *   **Remedies:** For time series, consider time series models; for other data, investigate if there's a systematic reason for error correlation (e.g., clustered data).
+
+3.  **Homoscedasticity (Constant Variance of Errors):**
+    *   **Assumption:** The variance of the errors is constant across all levels of the independent variables. In simpler terms, the spread of residuals should be roughly constant as you move along the regression line.
+    *   **Importance:** Heteroscedasticity (non-constant variance) can lead to inefficient and biased coefficient estimates, and unreliable predictions, especially for prediction intervals.
+    *   **Detection:** Examine residual plots for a funnel shape (indicating variance increasing or decreasing with predicted values). Statistical tests like Breusch-Pagan or White's test can also be used.
+    *   **Remedies:** Transformations of the dependent variable (e.g., logarithmic, square root) or using weighted least squares regression.
+
+4.  **Normality of Residuals:**
+    *   **Assumption:** The errors (residuals) are normally distributed. This assumption is more critical for hypothesis testing and confidence intervals than for point predictions.
+    *   **Importance:** While linear regression can still perform reasonably well without perfectly normal residuals (especially with large sample sizes, due to the Central Limit Theorem), significant deviations from normality can affect the reliability of statistical inference.
+    *   **Detection:** Check histograms, Q-Q plots of residuals for deviations from normality. Statistical tests like Shapiro-Wilk or Kolmogorov-Smirnov can also be used.
+    *   **Remedies:** Transformations of variables, consider if outliers are causing non-normality, or using robust regression techniques if outliers are a major issue.
+
+5.  **No or Little Multicollinearity:**
+    *   **Assumption:** In multiple linear regression, the independent variables are not highly correlated with each other.
+    *   **Importance:** Multicollinearity can make it difficult to disentangle the individual effects of correlated independent variables, inflate standard errors of coefficients, and make the model unstable and hard to interpret.
+    *   **Detection:** Calculate correlation coefficients between independent variables. Variance Inflation Factor (VIF) is a common metric to detect multicollinearity. VIF > 10 is often considered high.
+    *   **Remedies:** Remove one of the correlated variables, combine them into a single variable, or use dimensionality reduction techniques like PCA, or use regularization techniques like Ridge Regression.
+
+**In summary, checking these assumptions is a crucial step in linear regression analysis.** While some violations can be addressed with transformations or alternative methods, understanding the assumptions helps in properly applying and interpreting linear regression models.
 
 ## Evaluation Metrics for Linear Regression
 
