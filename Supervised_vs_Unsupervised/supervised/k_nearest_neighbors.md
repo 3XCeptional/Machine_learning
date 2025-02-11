@@ -92,7 +92,7 @@ This enhanced code snippet provides a more relevant and insightful example of us
 
 **Suggestion:**
 
-[Next Page Placeholder]
+Next up: [K-Means Clustering](Supervised_vs_Unsupervised/Unsupervised/k_means_clustering.md)
 
 ---
 
