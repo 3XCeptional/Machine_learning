@@ -90,7 +90,48 @@ Where:
 
 ### Multiple Linear Regression
 
-[Explain Multiple Linear Regression with examples and mathematical formulation.]
+**Multiple Linear Regression** is an extension of simple linear regression that uses **two or more independent variables** to predict the dependent variable. It's more versatile than simple linear regression as it can model more complex relationships.
+
+**Mathematical Formulation:**
+
+The equation for Multiple Linear Regression is:
+
+\( Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + ... + \beta_n X_n + \epsilon \)
+
+Where:
+
+*   \( Y \) is the dependent variable.
+*   \( X_1, X_2, ..., X_n \) are the independent variables.
+*   \( \beta_0 \) is the y-intercept.
+*   \( \beta_1, \beta_2, ..., \beta_n \) are the coefficients for each independent variable.
+*   \( \epsilon \) is the error term.
+
+**Explanation:**
+
+*   **Multiple Predictors:** Multiple linear regression is employed when the dependent variable is influenced by several factors. It allows us to assess the impact of each independent variable while holding others constant.
+*   **Hyperplane Fit:** Instead of fitting a line, multiple linear regression fits a hyperplane in a higher-dimensional space. Each coefficient (\( \beta_1, \beta_2, ..., \beta_n \)) represents the change in the dependent variable for a one-unit change in the corresponding independent variable, assuming all other independent variables are held constant.
+
+**Examples:**
+
+*   **Predicting house prices based on size, location, and age:** Here, 'house price' (Y) is predicted using 'size' (\( X_1 \)), 'location' (\( X_2 \)), and 'age' (\( X_3 \)). Multiple linear regression can model how each of these factors contributes to the house price.
+*   **Forecasting sales based on advertising spend across different channels (TV, online, print):** 'Sales' (Y) can be predicted using 'TV advertising spend' (\( X_1 \)), 'online advertising spend' (\( X_2 \)), and 'print advertising spend' (\( X_3 \)). This helps in understanding which advertising channels are most effective.
+*   **Modeling student performance based on study hours, prior grades, and attendance:** 'Student performance' (Y) can be predicted using 'study hours' (\( X_1 \)), 'prior grades' (\( X_2 \)), and 'attendance' (\( X_3 \)). Multiple linear regression can reveal the combined influence of these factors on student success.
+
+**When to Use Multiple Linear Regression:**
+
+*   When the dependent variable is expected to be influenced by multiple independent variables.
+*   For understanding the individual and combined effects of several predictors on an outcome.
+*   When you need a more comprehensive model than simple linear regression.
+
+**Advantages over Simple Linear Regression:**
+
+*   **More Realistic Modeling:** Can capture more complex real-world scenarios with multiple influencing factors.
+*   **Better Predictive Accuracy (potentially):** By considering more relevant variables, it can lead to more accurate predictions.
+
+**Considerations:**
+
+*   **Multicollinearity:** Independent variables should not be highly correlated with each other, as this can distort coefficient estimates and make interpretation difficult.
+*   **Feature Selection:** Choosing the right set of independent variables is crucial for building an effective model.
 
 ### Polynomial Regression
 
