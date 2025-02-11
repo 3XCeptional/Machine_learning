@@ -4,7 +4,7 @@ Supervised learning involves training a model on labeled data, where the input d
 
 1. **[Linear Regression](Supervised_vs_Unsupervised/supervised/linear regression.md)**
 2. **[Logistic Regression](Supervised_vs_Unsupervised/supervised/logistic_regression.md)**
-3. **Support Vector Machines (SVM)**
+3. **[Support Vector Machines (SVM)](Supervised_vs_Unsupervised/supervised/support_vector_machines.md)**
 4. **[Decision Trees](intro%20to%20Machine%20Learning/DecisionTree_and_%20DecisionTreeRegressor.md)**
 5. **Random Forests**
 6. **K-Nearest Neighbors (KNN)**
