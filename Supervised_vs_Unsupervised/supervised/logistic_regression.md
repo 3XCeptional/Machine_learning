@@ -24,23 +24,46 @@ We can use Logistic Regression to build a spam filter. The model learns from pas
 
 This is a classic use of Logistic Regression – making binary decisions (spam or not spam) based on different features.
 
-**Code Snippet (Python with scikit-learn):**
+**Code Snippet: Spam Detection in Python with scikit-learn**
 
 ```python
 from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
 
-# Sample data (hours studied, pass/fail)
-X = [[1], [2], [3], [4], [5], [6]]
-y = [0, 0, 0, 1, 1, 1] # 0 = fail, 1 = pass
+# Sample email data (features: word count, has_link, has_attachment)
+X = [[150, 1, 0], [20, 0, 0], [300, 1, 1], [50, 0, 0], [400, 1, 0], [70, 0, 0]]
+y = [1, 0, 1, 0, 1, 0] # 1 = spam, 0 = not spam
+
+# Split data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
 # Train the Logistic Regression model
 model = LogisticRegression()
-model.fit(X, y)
+model.fit(X_train, y_train)
 
-# Predict if a student studying for 3.5 hours will pass
-prediction = model.predict([[3.5]])
-print(f"Will the student pass? (1=Yes, 0=No): {prediction[0]}")
+# Make predictions on the test set
+y_pred = model.predict(X_test)
+
+# Evaluate the model's accuracy
+accuracy = accuracy_score(y_test, y_pred)
+print(f"Model Accuracy: {accuracy:.2f}")
+
+# Example prediction for a new email (word count: 250, has_link: 1, has_attachment: 0)
+new_email_features = [[250, 1, 0]]
+new_prediction = model.predict(new_email_features)
+print(f"Is the new email spam? (1=Yes, 0=No): {new_prediction[0]}")
 ```
+
+**Explanation of the code:**
+
+1.  **Features:** We use simplified email features: word count, presence of a link, and presence of an attachment. In a real spam filter, you'd use much more sophisticated features!
+2.  **Training Data:** `X` represents email features, and `y` represents labels (spam or not spam).
+3.  **Model Training:** We train a Logistic Regression model using `fit()`.
+4.  **Prediction:** We use `predict()` to classify a new email as spam or not spam.
+5.  **Evaluation:** We use `accuracy_score` to see how well our model performs on unseen test data. Accuracy is a simple way to measure how often the model is correct.
+
+This code snippet provides a basic, yet more relevant, example of how Logistic Regression can be used for spam detection. Remember, real-world spam filters are much more complex and use a wider range of features and techniques!
 
 **Suggestion:**
 
