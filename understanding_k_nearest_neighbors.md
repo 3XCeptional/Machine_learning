@@ -67,11 +67,41 @@ Using simple averaging, the predicted price for the new house would be:
 
 ## Distance Metrics in KNN
 
-[Discuss different distance metrics used in KNN and when to use each:]
+The choice of **distance metric** is a crucial aspect of the KNN algorithm, as it determines how "near" neighbors are defined. Different distance metrics are suitable for different types of data and problem settings. Here are some common distance metrics used in KNN:
 
 ### Euclidean Distance
 
-[Explain Euclidean Distance and its formula.]
+**Definition:** Euclidean distance is the most commonly used distance metric in KNN, especially when dealing with continuous, real-valued features. It represents the **straight-line distance** between two points in Euclidean space.
+
+**Formula:**
+
+For two points \( x = (x_1, x_2, ..., x_n) \) and \( y = (y_1, y_2, ..., y_n) \) in n-dimensional space, the Euclidean distance \( d(x, y) \) is calculated as:
+
+\( d(x, y) = \sqrt{\sum_{i=1}^{n} (x_i - y_i)^2} \)
+
+Which is equivalent to:
+
+\( d(x, y) = \sqrt{(x_1 - y_1)^2 + (x_2 - y_2)^2 + ... + (x_n - y_n)^2} \)
+
+**Explanation:**
+
+*   **Straight-Line Distance:** Euclidean distance is the length of the straight line segment connecting two points. It's the "ordinary" distance between two points that one would measure with a ruler in Euclidean space.
+*   **Sensitive to Magnitude:** Euclidean distance is sensitive to the magnitude of the features. Features with larger values will have a greater influence on the distance. Therefore, feature scaling (e.g., standardization or normalization) is often recommended when using Euclidean distance with KNN, especially if features are on different scales.
+*   **Continuous Data:** Best suited for continuous numerical data. It may not be appropriate for categorical or binary features without proper encoding.
+
+**When to Use Euclidean Distance:**
+
+*   **Continuous Numerical Features:** When your features are continuous and measured on interval or ratio scales.
+*   **Data in Euclidean Space:** When you assume that the data points are located in a Euclidean space and straight-line distance is a meaningful measure of similarity.
+*   **General-Purpose Distance Metric:** It's often a good starting point as a distance metric for KNN due to its intuitive nature and wide applicability.
+
+**Example (2D space):**
+
+For two points \( x = (2, 3) \) and \( y = (5, 7) \) in a 2D plane, the Euclidean distance is:
+
+\( d(x, y) = \sqrt{(2 - 5)^2 + (3 - 7)^2} = \sqrt{(-3)^2 + (-4)^2} = \sqrt{9 + 16} = \sqrt{25} = 5 \)
+
+**In summary, Euclidean distance is a fundamental and widely used distance metric in KNN, particularly suitable for continuous numerical data and when a straight-line distance measure is appropriate.** Remember to consider feature scaling when using Euclidean distance, especially if features are on different scales.
 
 ### Manhattan Distance
 
