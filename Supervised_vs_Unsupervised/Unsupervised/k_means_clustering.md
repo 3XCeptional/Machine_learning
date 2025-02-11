@@ -38,26 +38,50 @@ Once you have these segments, you can create targeted marketing strategies. For 
 
 This example shows how K-Means can be used to uncover valuable insights from customer data, enabling businesses to personalize their approaches and improve marketing effectiveness.
 
-**Code Snippet (Python with scikit-learn):**
+**Code Snippet: Customer Segmentation Visualization with K-Means in scikit-learn**
 
 ```python
 from sklearn.cluster import KMeans
 import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
 
-# Sample data (features)
-X = np.array([[1, 1], [1, 2], [2, 2], [2, 3], [8, 7], [8, 8], [9, 7], [9, 8]])
+# Sample customer data with clear clusters (for visualization)
+data = {'Age': [20, 22, 25, 24, 60, 62, 65, 64, 35, 37, 40, 39],
+        'Spending_Score': [20, 22, 25, 24, 80, 82, 85, 84, 50, 52, 55, 54]}
+df = pd.DataFrame(data)
 
-# Train the K-Means clustering model
-kmeans = KMeans(n_clusters=2, random_state=0, n_init='auto') # Specify the number of clusters
-kmeans.fit(X)
+X = df[['Age', 'Spending_Score']].values
 
-# Get cluster labels and cluster centers
-labels = kmeans.labels_
-centroids = kmeans.cluster_centers_
+# Experiment with different values of K
+for k in range(2, 5):  # Trying K=2, 3, 4
+    kmeans = KMeans(n_clusters=k, random_state=0, n_init='auto')
+    df[f'Cluster_K{k}'] = kmeans.fit_predict(X) # Assign cluster labels to DataFrame
 
-print("Cluster Labels:", labels)
-print("Centroids:", centroids)
+    # Visualize clusters
+    plt.figure(figsize=(6, 4))
+    for cluster_label in range(k):
+        cluster_data = df[df[f'Cluster_K{k}'] == cluster_label]
+        plt.scatter(cluster_data['Age'], cluster_data['Spending_Score'], label=f'Cluster {cluster_label}')
+    plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], s=200, c='black', label='Centroids') # Plot centroids
+    plt.title(f'K-Means Clustering with K={k}')
+    plt.xlabel('Age')
+    plt.ylabel('Spending Score')
+    plt.legend()
+    plt.show() # This will display the plot - in a real notebook, it would be inline
+
+print(df) # Display DataFrame with cluster labels
+
 ```
+
+**Explanation of code enhancements:**
+
+1.  **Visually Separable Data:**  The sample data is designed to create visually distinct clusters for better demonstration.
+2.  **Visualization:**  The code now includes visualization using `matplotlib.pyplot` to plot the clusters and centroids. This helps to understand how K-Means groups data points.
+3.  **Impact of K:**  The code iterates through different values of 'K' (2, 3, and 4) and generates plots for each, demonstrating how the number of clusters affects the results.
+4.  **Cluster Labels in DataFrame:**  Cluster labels are added to the Pandas DataFrame, making it easy to see cluster assignments for each data point.
+
+This enhanced code snippet provides a visual and interactive way to understand K-Means clustering and the impact of the 'K' parameter, making the explanation more engaging and intuitive.
 
 **Suggestion:**
 
