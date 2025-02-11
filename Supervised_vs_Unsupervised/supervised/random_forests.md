@@ -28,23 +28,60 @@ For example, some trees might focus heavily on "usage duration" and "monthly spe
 
 This example highlights how Random Forests can handle complex datasets with multiple features and provide valuable predictions for business decision-making.
 
-**Code Snippet (Python with scikit-learn):**
+**Code Snippet: Customer Churn Prediction with Random Forest in scikit-learn**
 
 ```python
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+import pandas as pd
 
-# Sample data (features, label)
-X = [[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12]]
-y = [0, 0, 0, 1, 1, 1] # 0 = class 1, 1 = class 2
+# Sample customer churn data (features: duration, spending, interactions, website_activity)
+data = {'duration': [12, 3, 24, 6, 36, 9],
+        'spending': [50, 20, 100, 30, 150, 40],
+        'interactions': [2, 1, 5, 1, 8, 2],
+        'website_activity': [5, 2, 8, 3, 10, 4],
+        'churn': [0, 1, 0, 1, 0, 1]} # 0 = no churn, 1 = churn
+df = pd.DataFrame(data)
 
-# Train the Random Forest classifier
-model = RandomForestClassifier(n_estimators=100) # You can adjust the number of trees
-model.fit(X, y)
+X = df[['duration', 'spending', 'interactions', 'website_activity']]
+y = df['churn']
 
-# Predict the class for a new data point [6, 7]
-prediction = model.predict([[6, 7]])
-print(f"Predicted class: {prediction[0]}")
+# Split data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Train a Random Forest classifier with hyperparameter tuning
+model = RandomForestClassifier(n_estimators=150, max_depth=10, random_state=42) # Tuned parameters
+model.fit(X_train, y_train)
+
+# Make predictions on the test set
+y_pred = model.predict(X_test)
+
+# Evaluate the model
+accuracy = accuracy_score(y_test, y_pred)
+print(f"Model Accuracy: {accuracy:.2f}")
+
+print("\nClassification Report:")
+print(classification_report(y_test, y_pred))
+
+print("\nConfusion Matrix:")
+print(confusion_matrix(y_test, y_pred))
+
+
+# Example prediction for a new customer
+new_customer_features = [[20, 80, 3, 7]] # duration, spending, interactions, website_activity
+new_prediction = model.predict(new_customer_features)
+print(f"\nWill the new customer churn? (0=No, 1=Yes): {new_prediction[0]}")
 ```
+
+**Explanation of the code enhancements:**
+
+1.  **Realistic Features:**  The code now uses features more relevant to customer churn: 'duration', 'spending', 'interactions', and 'website_activity'.
+2.  **Pandas DataFrame:**  Uses a Pandas DataFrame to handle data, making it more organized and readable.
+3.  **Hyperparameter Tuning:**  Demonstrates setting hyperparameters like `n_estimators` (number of trees) and `max_depth` to control model complexity.
+4.  **Comprehensive Evaluation:**  Includes `classification_report` (precision, recall, F1-score) and `confusion_matrix` for a more detailed evaluation of the model's performance, beyond just accuracy.
+
+This enhanced code snippet provides a more practical and insightful example of using Random Forests for a real-world problem and demonstrates important aspects like hyperparameter tuning and comprehensive evaluation.
 
 **Suggestion:**
 
