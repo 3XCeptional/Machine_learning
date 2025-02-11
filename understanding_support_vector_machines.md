@@ -213,7 +213,46 @@ Where:
 
 ## Mathematical Formulation of SVM
 
-[Briefly touch upon the mathematical formulation of SVM, including the Primal and Dual problems and Lagrangian multipliers (optional: keep it high-level or provide more detail if appropriate).]
+The mathematical formulation of SVM is rooted in optimization theory. At its core, SVM training involves solving an optimization problem to find the hyperplane that maximizes the margin while correctly classifying (or tolerating a controlled amount of misclassification in soft margin SVM). Here's a high-level overview, focusing on the key ideas without delving into excessive mathematical detail:
+
+**1. Primal Problem (Hard Margin SVM - Linearly Separable Data):**
+
+For linearly separable data, the primal problem aims to:
+
+*   **Minimize:** \( \frac{1}{2} ||\beta||^2 \) (Minimize the norm of the weight vector \( \beta \), which is equivalent to maximizing the margin \( \frac{2}{||\beta||} \))
+*   **Subject to the constraints:** \( y_i (\beta^T x_i + \beta_0) \geq 1 \) for all training examples \( i \). This constraint ensures that all data points are correctly classified and lie outside or on the margin boundaries.
+    *   \( x_i \) are the input feature vectors.
+    *   \( y_i \) are the class labels (+1 or -1).
+    *   \( \beta \) is the weight vector, and \( \beta_0 \) is the bias term that define the hyperplane.
+
+**2. Dual Problem and Kernel Trick:**
+
+Solving the primal problem directly can be computationally intensive, especially with kernels. The **dual problem** provides an alternative formulation that is often more efficient and naturally incorporates the kernel trick.
+
+*   **Lagrangian Multipliers:** The dual problem is derived using Lagrangian multipliers and involves maximizing a dual objective function that depends on the dot products of the input data points and Lagrange multipliers (\( \alpha_i \)).
+*   **Kernel Substitution:** In the dual formulation, the input vectors \( x_i \) appear only in the form of dot products \( x_i^T x_j \). This is where the "kernel trick" comes in. We can replace the dot product \( x_i^T x_j \) with a kernel function \( K(x_i, x_j) \). This allows us to work in the high-dimensional feature space implicitly, without explicitly computing the feature mappings.
+*   **Dual Objective (Simplified form for linear kernel):**
+    Maximize \( L_D(\alpha) = \sum_{i=1}^{n} \alpha_i - \frac{1}{2} \sum_{i=1}^{n} \sum_{j=1}^{n} \alpha_i \alpha_j y_i y_j (x_i^T x_j) \)
+    *Subject to:* \( 0 \leq \alpha_i \leq C \) and \( \sum_{i=1}^{n} \alpha_i y_i = 0 \)
+
+**3. Soft Margin SVM (Handling Non-Separable Data):**
+
+For non-linearly separable data, **slack variables** \( \xi_i \) are introduced to allow for some misclassifications (margin violations). The primal problem is modified to:
+
+*   **Minimize:** \( \frac{1}{2} ||\beta||^2 + C \sum_{i=1}^{n} \xi_i \) (Minimize \( ||\beta||^2 \) plus a penalty for misclassifications, controlled by \( C \))
+*   **Subject to the constraints:** \( y_i (\beta^T x_i + \beta_0) \geq 1 - \xi_i \) and \( \xi_i \geq 0 \) for all training examples \( i \). 
+    *   \( \xi_i \) are slack variables that measure the degree of misclassification for data point \( i \).
+    *   \( C \) is the regularization parameter that controls the trade-off between margin maximization and misclassification penalty.
+
+**Role of Mathematical Formulation:**
+
+Understanding the mathematical formulation of SVM is important for:
+
+*   **Theoretical Understanding:** Provides a deeper insight into how SVM works and its optimization objectives.
+*   **Algorithm Design and Modification:** Helps in understanding the algorithm's behavior and potential modifications.
+*   **Software Implementation:** Forms the basis for efficient SVM solvers and library implementations.
+
+However, for practical application, especially using libraries like scikit-learn, a high-level understanding of these concepts is often sufficient. Libraries handle the optimization details, and users primarily focus on choosing appropriate kernels, tuning hyperparameters (like \( C \) and kernel-specific parameters), and evaluating model performance.
 
 ## Soft Margin SVM and the C Parameter
 
