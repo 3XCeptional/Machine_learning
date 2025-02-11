@@ -46,9 +46,47 @@ In the following sections, we will delve deeper into the types of linear regress
 
 ## Types of Linear Regression
 
+Linear Regression can be categorized into different types based on the number of independent variables and the nature of the relationship between variables. The main types are:
+
 ### Simple Linear Regression
 
-[Explain Simple Linear Regression with examples and mathematical formulation.]
+**Simple Linear Regression** is the most basic form of linear regression. It involves **only one independent variable** to predict the dependent variable. The goal is to find the best-fitting linear relationship between these two variables.
+
+**Mathematical Formulation:**
+
+The equation for Simple Linear Regression is:
+
+\( Y = \beta_0 + \beta_1 X + \epsilon \)
+
+Where:
+
+*   \( Y \) is the dependent variable.
+*   \( X \) is the single independent variable.
+*   \( \beta_0 \) is the y-intercept.
+*   \( \beta_1 \) is the slope.
+*   \( \epsilon \) is the error term.
+
+**Explanation:**
+
+*   **One Predictor:** Simple linear regression is used when you want to understand or predict how a change in one variable (X) affects another variable (Y), assuming a linear trend.
+*   **Straight Line Fit:** It models this relationship using a straight line. The slope (\( \beta_1 \)) indicates how much the dependent variable is expected to increase (or decrease, if negative) for every unit increase in the independent variable. The y-intercept (\( \beta_0 \)) is the value of the dependent variable when the independent variable is zero.
+
+**Examples:**
+
+*   **Predicting exam scores based on study hours:** Here, 'exam scores' (Y) is the dependent variable, and 'study hours' (X) is the independent variable. Simple linear regression can model how exam scores are likely to change with an increase in study hours.
+*   **Forecasting temperature based on altitude:** 'Temperature' (Y) could be predicted based on 'altitude' (X). As altitude increases, temperature generally decreases, and simple linear regression can model this linear decline.
+*   **Estimating product sales based on advertising spend:** 'Product sales' (Y) might be predicted using 'advertising spend' (X). Assuming that more advertising leads to higher sales, simple linear regression can quantify this relationship.
+
+**When to Use Simple Linear Regression:**
+
+*   When you have a single independent variable that you believe has a linear relationship with the dependent variable.
+*   For understanding the basic linear relationship between two variables.
+*   As a starting point before considering more complex models.
+
+**Limitations:**
+
+*   Only considers one independent variable, which might oversimplify real-world scenarios.
+*   Assumes a linear relationship, which may not always be the case.
 
 ### Multiple Linear Regression
 
