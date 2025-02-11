@@ -213,7 +213,47 @@ Linear regression, while powerful, relies on several key assumptions to ensure t
 
 ## Evaluation Metrics for Linear Regression
 
-[Explain common evaluation metrics for regression models, such as Mean Squared Error (MSE), Root Mean Squared Error (RMSE), Mean Absolute Error (MAE), R-squared, and Adjusted R-squared.]
+After building a linear regression model, it's crucial to evaluate its performance. Several metrics are used to assess how well the model is predicting the dependent variable. Here are some common evaluation metrics for regression models:
+
+1.  **Mean Squared Error (MSE):**
+    *   **Definition:** MSE calculates the average of the squared differences between the predicted and actual values.
+    *   **Formula:** \( MSE = \frac{1}{n} \sum_{i=1}^{n} (Y_i - \hat{Y}_i)^2 \)
+        where \( Y_i \) is the actual value, \( \hat{Y}_i \) is the predicted value, and \( n \) is the number of data points.
+    *   **Interpretation:** MSE measures the average squared magnitude of the error. Lower MSE values indicate better model performance. Squaring the errors penalizes larger errors more heavily.
+    *   **Units:** The units of MSE are the square of the units of the dependent variable.
+
+2.  **Root Mean Squared Error (RMSE):**
+    *   **Definition:** RMSE is the square root of the MSE.
+    *   **Formula:** \( RMSE = \sqrt{MSE} = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (Y_i - \hat{Y}_i)^2} \)
+    *   **Interpretation:** RMSE is also a measure of the average magnitude of the error. It is more interpretable than MSE because RMSE is in the same units as the dependent variable. Lower RMSE values indicate better model performance.
+    *   **Units:** The units of RMSE are the same as the units of the dependent variable.
+
+3.  **Mean Absolute Error (MAE):**
+    *   **Definition:** MAE calculates the average of the absolute differences between the predicted and actual values.
+    *   **Formula:** \( MAE = \frac{1}{n} \sum_{i=1}^{n} |Y_i - \hat{Y}_i| \)
+    *   **Interpretation:** MAE measures the average absolute magnitude of the errors. Like RMSE, lower MAE values are better. MAE is less sensitive to outliers compared to MSE and RMSE because it uses absolute errors rather than squared errors.
+    *   **Units:** The units of MAE are the same as the units of the dependent variable.
+
+4.  **R-squared (Coefficient of Determination):**
+    *   **Definition:** R-squared measures the proportion of the variance in the dependent variable that is predictable from the independent variables.
+    *   **Formula:** \( R^2 = 1 - \frac{SSE}{SST} = 1 - \frac{\sum_{i=1}^{n} (Y_i - \hat{Y}_i)^2}{\sum_{i=1}^{n} (Y_i - \bar{Y})^2} \)
+        where \( SSE \) is the Sum of Squared Errors (or Residual Sum of Squares), \( SST \) is the Total Sum of Squares, and \( \bar{Y} \) is the mean of the actual values.
+    *   **Interpretation:** R-squared ranges from 0 to 1. An R-squared of 1 indicates that the model explains all the variance in the dependent variable, while 0 indicates that it explains none of the variance. Higher R-squared values generally indicate a better fit. However, R-squared does not indicate if the model is biased.
+    *   **Limitations:** R-squared can increase with the addition of more variables, even if those variables do not improve the model's fit in a meaningful way. It does not penalize for model complexity.
+
+5.  **Adjusted R-squared:**
+    *   **Definition:** Adjusted R-squared is a modified version of R-squared that adjusts for the number of predictors in the model. It penalizes the addition of irrelevant variables that do not truly improve the model fit.
+    *   **Formula:** \( Adjusted\ R^2 = 1 - \frac{(1 - R^2)(n - 1)}{n - p - 1} \)
+        where \( n \) is the number of data points and \( p \) is the number of independent variables in the model.
+    *   **Interpretation:** Adjusted R-squared is always less than or equal to R-squared. It is useful for comparing models with different numbers of independent variables. Higher adjusted R-squared values, especially when comparing models with different complexities, are generally preferred, indicating a better balance between model fit and simplicity.
+
+**Choosing the Right Metric:**
+
+*   **MSE and RMSE:** Useful when you want to penalize larger errors more heavily. RMSE is often preferred because it's in the original units, making it more interpretable.
+*   **MAE:** More robust to outliers as it uses absolute errors. Good when you want a measure of error that is less sensitive to extreme values.
+*   **R-squared and Adjusted R-squared:** Useful for understanding the proportion of variance explained by the model and for comparing models, especially when considering model complexity. However, they should not be the sole metric, as they don't indicate if the model is biased or if predictions are practically useful.
+
+In practice, it's often recommended to consider multiple evaluation metrics to get a comprehensive understanding of a linear regression model's performance.
 
 ## Implementation and Examples
 
