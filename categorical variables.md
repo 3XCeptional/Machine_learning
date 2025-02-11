@@ -1,6 +1,8 @@
+You want to dive deeper into understanding categorical variables? Check out the detailed explanation [here](./understanding_categorical_variables.md).
 
+---
 
-
+Here is the latest file content as of (2025-02-11T01:15:17.896Z):
 
 ```py
 # Get list of categorical variables
@@ -14,8 +16,6 @@ print(object_cols)
 ```sh
 Categorical variables:
 ['Type', 'Method', 'Regionname']
-
-
 ```
 ---
 ```python
@@ -24,12 +24,7 @@ def score_dataset(X_train,X_valid,y_train,y_valid):
     model.fit(X_train, y_train)
     preds = model.predict(X_valid)
     return mean_absolute_error(y_valid, preds)
-
-
 ```
-
-
-
 
 **Score from Approach 2 (Ordinal Encoding)**:
 
