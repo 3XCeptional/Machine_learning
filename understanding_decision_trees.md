@@ -36,7 +36,37 @@ Decision trees work by recursively partitioning the feature space based on featu
 
 ### Decision Trees for Regression
 
-[Explain how Decision Trees work for regression tasks, highlighting the differences from classification trees.]
+**Regression Trees** are used when the target variable is continuous, and the goal is to predict a numerical value. While they share a similar tree structure with classification trees, there are key differences in how they make predictions and how splits are determined. Here's how regression trees work:
+
+1.  **Recursive Partitioning (Similar to Classification Trees):** Regression trees also use recursive partitioning to divide the feature space into regions. The process starts at the root node and recursively splits data based on feature tests at internal nodes.
+2.  **Feature Selection and Splitting Criteria (Difference from Classification Trees):** Instead of splitting criteria like Entropy or Gini Impurity that aim to maximize class separation, regression trees use criteria that aim to **minimize the variance or impurity of the target variable values** within each region. Common splitting criteria for regression trees include:
+    *   **Mean Squared Error (MSE) Reduction:** The most common criterion. It aims to find splits that minimize the average squared difference between the actual target values and the mean target value in each child node.
+    *   **Mean Absolute Error (MAE) Reduction:** A less sensitive to outliers alternative to MSE, aiming to minimize the average absolute difference.
+    *   **Reduction in Variance:** Some regression tree algorithms directly aim to reduce the variance of the target variable in the child nodes compared to the parent node.
+    The algorithm evaluates different features and split points to find the split that best reduces the chosen impurity measure (e.g., MSE) in the resulting child nodes.
+3.  **Node Splitting and Stopping Criteria:** Node splitting and stopping criteria are similar to classification trees, but the splitting criteria and the prediction at leaf nodes are different.
+4.  **Leaf Node Prediction (Difference from Classification Trees):** In regression trees, each leaf node is assigned a **predicted numerical value**. This value is typically the **average (mean) of the target values** of the training samples that fall into that leaf node. 
+5.  **Prediction for New Data Point:** When a new data point reaches a leaf node in a regression tree, the predicted value for that data point is the average target value associated with that leaf node.
+
+**Example (Simplified):**
+
+Imagine a regression tree to predict "house price" based on "size" (square footage).
+
+*   **Root Node:** "Is 'size' ≤ 1500 sq ft?"
+    *   **Yes Branch:** Go to Child Node (subtree for houses ≤ 1500 sq ft).
+    *   **No Branch:** Go to another Child Node (subtree for houses > 1500 sq ft).
+*   **Leaf Node (under "Yes" branch):** Predict average price of training houses ≤ 1500 sq ft (e.g., $250,000).
+*   **Leaf Node (under "No" branch):** Predict average price of training houses > 1500 sq ft (e.g., $450,000).
+
+To predict the price of a new house, you'd start at the root, check its "size". If it's ≤ 1500 sq ft, you follow the "Yes" branch and predict $250,000. If not, you follow the "No" branch and predict $450,000.
+
+**Key Differences from Classification Trees:**
+
+*   **Prediction Type:** Regression trees predict continuous numerical values, while classification trees predict categorical class labels.
+*   **Splitting Criteria:** Regression trees use splitting criteria like MSE reduction or variance reduction, aimed at minimizing the variance/error in predicted values, whereas classification trees use criteria like Entropy or Gini Impurity, aimed at maximizing class separation.
+*   **Leaf Node Values:** Leaf nodes in regression trees store predicted numerical values (averages), while leaf nodes in classification trees store class labels (majority class).
+
+**In summary, regression trees adapt the decision tree framework for regression tasks by predicting continuous values based on recursive partitioning and averaging target values in leaf nodes.** They use different splitting criteria and prediction mechanisms compared to classification trees, tailored for numerical prediction.
 
 ## Splitting Criteria in Decision Trees
 
