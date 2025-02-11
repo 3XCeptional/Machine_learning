@@ -41,6 +41,8 @@ Here’s a set of clear, concise notes on each topic with easy-to-understand exp
 - **Example**: Classifying if a tumor is malignant or benign based on features like size and texture.
 - **Key Term**: **Support Vectors** – Data points that are closest to the decision boundary and influence its position.
 
+[Dive deeper into Support Vector Machines (SVM)](./understanding_support_vector_machines.md)
+
 ---
 
 ### **4. KNN (K-Nearest Neighbour)**
