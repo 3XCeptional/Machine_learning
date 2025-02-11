@@ -57,5 +57,7 @@ We use validation data, which isn't used in model training, to measure a candida
 **Suggestion:**
 
 Back to: [List of Topics](Intro_list.md) | 
-Next up: [Overfitting in Machine Learning](overfitting.md)
+**Suggestion:**
 
+Back to: [List of Topics](Intro_list.md) | 
+Next up: [Overfitting in Machine Learning](overfitting.md)
