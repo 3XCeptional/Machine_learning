@@ -52,6 +52,8 @@ Here’s a set of clear, concise notes on each topic with easy-to-understand exp
 - **Example**: Recommending movies by finding movies that similar users have liked.
 - **Key Term**: **Distance Metrics** – Measures (like Euclidean distance) used to find closest neighbors.
 
+[Dive deeper into K-Nearest Neighbors (KNN)](./understanding_k_nearest_neighbors.md)
+
 ---
 
 ### **5. Decision Tree**
