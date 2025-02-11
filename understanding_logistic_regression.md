@@ -44,9 +44,44 @@ The sigmoid function is crucial because it links the linear combination of featu
 
 ## Types of Logistic Regression
 
+Logistic Regression can be extended to handle different types of classification problems. The main types are:
+
 ### Binary Logistic Regression
 
-[Explain Binary Logistic Regression for binary classification problems.]
+**Binary Logistic Regression** is the most common and fundamental type of logistic regression. It is used when the dependent variable has **only two possible outcomes** or categories. These outcomes are typically represented as 0 or 1, True or False, Yes or No, Success or Failure, etc.
+
+**Key Characteristics:**
+
+*   **Two Classes:** Deals with problems where there are exactly two classes to predict.
+*   **Binary Outcome:** The dependent variable is binary or dichotomous.
+*   **Probability of One Class:** It models the probability of one of the two classes (usually the positive class, labeled as 1). The probability of the other class (class 0) is then simply 1 minus the probability of class 1.
+
+**Mathematical Formulation:**
+
+As seen earlier, the basic logistic regression equation inherently models binary outcomes:
+
+\( p(X) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 X + ... + \beta_n X_n)}} \)
+
+This equation directly gives the probability of the dependent variable belonging to class 1. The probability of belonging to class 0 is \( 1 - p(X) \).
+
+**Examples:**
+
+*   **Email Spam Detection:** Classifying emails as either "Spam" (1) or "Not Spam" (0).
+*   **Disease Diagnosis (Binary Outcome):** Predicting whether a patient has a disease (1) or does not have the disease (0) based on medical tests.
+*   **Credit Card Fraud Detection:** Identifying transactions as "Fraudulent" (1) or "Not Fraudulent" (0).
+*   **Customer Churn:** Predicting whether a customer will "Churn" (1) or "Not Churn" (0).
+*   **Ad Click-Through Prediction:** Predicting whether a user will "Click" on an online ad (1) or "Not Click" (0).
+
+**Decision Rule:**
+
+In binary logistic regression, after calculating the probability \( p(X) \), a decision rule is applied to classify instances. The most common rule is:
+
+*   If \( p(X) \geq 0.5 \), predict class 1.
+*   If \( p(X) < 0.5 \), predict class 0.
+
+The threshold of 0.5 can be adjusted depending on the specific problem and the desired balance between precision and recall.
+
+**In summary, binary logistic regression is your go-to method when you need to classify data into two categories.** It's interpretable, computationally efficient, and widely applicable to problems with binary outcomes.
 
 ### Multinomial Logistic Regression
 
