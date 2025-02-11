@@ -37,7 +37,33 @@ In the following sections, we will delve deeper into how KNN works for classific
 
 ### KNN for Regression
 
-[Explain how KNN works for regression tasks, including averaging or weighted averaging of neighbors' values.]
+In **KNN regression**, the algorithm is used to predict a continuous target variable value for a new data point. The process is similar to KNN classification but with a different prediction method:
+
+1.  **Choose a K Value and Distance Metric:** Same as in KNN classification, you need to select the number of neighbors (\( K \)) and a distance metric.
+2.  **Find K-Nearest Neighbors:** For a new data point for which you want to predict a value, identify its \( K \) nearest neighbors in the training dataset using the chosen distance metric.
+3.  **Value Averaging (Regression Prediction):** Instead of majority voting, KNN regression predicts the target value for the new data point by **averaging** the target values of its \( K \) nearest neighbors. 
+    *   **Simple Averaging:** Calculate the arithmetic mean of the target values of the \( K \) neighbors.
+    *   **Weighted Averaging (Optional):**  You can also use weighted averaging, where closer neighbors have a greater influence on the prediction. Weights are typically assigned based on the inverse of the distance to each neighbor (closer neighbors get higher weights).
+
+**Example (Simplified):**
+
+Suppose you want to predict the "price" of a house based on its features using KNN regression with \( K=3 \) and Euclidean distance. For a new house, you find its 3 nearest neighbors in the training dataset. Let's say their house prices are:
+
+*   Neighbor 1 Price: $250,000
+*   Neighbor 2 Price: $280,000
+*   Neighbor 3 Price: $310,000
+
+Using simple averaging, the predicted price for the new house would be:
+
+\( \frac{250,000 + 280,000 + 310,000}{3} = $280,000 \)
+
+**Key Aspects:**
+
+*   **Continuous Output:** KNN regression predicts a continuous numerical value, unlike KNN classification which predicts categorical labels.
+*   **Averaging or Weighted Averaging:** Prediction is based on averaging (or weighted averaging) neighbor values. Weighted averaging can improve predictions by giving more importance to closer neighbors.
+*   **Smoothness of Predictions:** KNN regression tends to produce locally smooth predictions. The smoothness depends on the choice of \( K \) and the distance metric.
+
+**In summary, KNN regression adapts the core idea of KNN to regression tasks by predicting continuous values based on the average values of the nearest neighbors.** It's a non-parametric and versatile approach for regression, especially when the relationship between features and the target variable is complex or non-linear, but smoothness and interpretability are less critical.
 
 ## Distance Metrics in KNN
 
