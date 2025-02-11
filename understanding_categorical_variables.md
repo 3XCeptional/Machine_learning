@@ -289,8 +289,85 @@ So, the encoded "City" column becomes:
 
 **In essence, target encoding is a powerful but more complex technique.** It can be very effective when used appropriately, especially for high-cardinality features, but requires careful implementation to avoid overfitting and data leakage. 
 
+---
+
+**Let's see some Python code examples using scikit-learn!** 🐍
+
+```python
+import pandas as pd
+from sklearn.preprocessing import OrdinalEncoder, OneHotEncoder, LabelEncoder
+# No direct scikit-learn for target encoding, often use libraries like category_encoders
+
+# Sample Data - DataFrame
+data = pd.DataFrame({
+    'Ordinal_Feature': ['Low', 'Medium', 'High', 'Medium', 'Low'],
+    'Nominal_Feature': ['Red', 'Blue', 'Green', 'Red', 'Blue'],
+    'Label_Feature': ['Yes', 'No', 'Yes', 'No', 'Yes'],
+    'Target_Variable': [100, 200, 150, 250, 120] # Example target for Target Encoding
+})
+
+print("Original Data:")
+print(data)
+
+# 1. Ordinal Encoding (for Ordinal_Feature)
+ordinal_encoder = OrdinalEncoder(categories=[['Low', 'Medium', 'High']]) # Define order of categories
+data['Ordinal_Encoded'] = ordinal_encoder.fit_transform(data[['Ordinal_Feature']])
+print("\nOrdinal Encoding:")
+print(data[['Ordinal_Feature', 'Ordinal_Encoded']])
+
+# 2. One-Hot Encoding (for Nominal_Feature)
+onehot_encoder = OneHotEncoder(sparse_output=False, handle_unknown='ignore') # sparse=False for dense array
+encoded_cols = onehot_encoder.fit_transform(data[['Nominal_Feature']])
+encoded_feature_names = onehot_encoder.get_feature_names_out(['Nominal_Feature'])
+onehot_df = pd.DataFrame(encoded_cols, columns=encoded_feature_names)
+data = pd.concat([data, onehot_df], axis=1)
+print("\nOne-Hot Encoding:")
+print(data[['Nominal_Feature', 'Nominal_Feature_Blue', 'Nominal_Feature_Green', 'Nominal_Feature_Red']])
+
+
+# 3. Label Encoding (for Label_Feature)
+label_encoder = LabelEncoder()
+data['Label_Encoded'] = label_encoder.fit_transform(data['Label_Feature'])
+print("\nLabel Encoding:")
+print(data[['Label_Feature', 'Label_Encoded']])
+
+# Target Encoding (example using category_encoders library - install it: pip install category_encoders)
+import category_encoders as ce
+target_encoder = ce.TargetEncoder(cols=['Nominal_Feature']) # Encode Nominal_Feature using Target
+data['Target_Encoded_Nominal'] = target_encoder.fit_transform(data[['Nominal_Feature']], data['Target_Variable'])
+print("\nTarget Encoding (Nominal Feature):")
+print(data[['Nominal_Feature', 'Target_Encoded_Nominal', 'Target_Variable']])
+
+
+print("\nFinal Data with all encodings:")
+print(data)
+```
+
+**Explanation of Code:**
+
+*   **OrdinalEncoder:** We explicitly define the `categories` to ensure the correct order is learned.
+*   **OneHotEncoder:** `sparse=False` makes the output a dense NumPy array (easier to view in DataFrame). `handle_unknown='ignore'` is good practice.
+*   **LabelEncoder:** Straightforward label encoding.
+*   **TargetEncoder:** We use `category_encoders` library (you might need to install it). We encode 'Nominal_Feature' based on 'Target_Variable'.
+
+**Remember to install `category_encoders` if you want to run the Target Encoding part!** 
+```bash
+pip install category_encoders
+```
+
+---
+
 ## Conclusion
 
-[Summarize the importance of understanding categorical variables and choosing appropriate encoding techniques.]
+**Categorical variables are everywhere in data!** 🌍 Understanding their types and how to encode them is a **must-have skill** for any data scientist or machine learning enthusiast. 🚀 
+
+Choosing the right encoding technique depends on:
+
+*   **Type of Categorical Variable:** Nominal, Ordinal, Binary?
+*   **Machine Learning Model:** Some models handle certain encodings better.
+*   **Cardinality of Features:** How many unique categories are there?
+*   **Potential for Overfitting/Data Leakage:** Especially with advanced techniques like Target Encoding.
+
+**Keep experimenting and exploring to find the best encoding strategies for your data and problems!** Happy coding! 🎉 
 
 [Link back to `categorical variables.md` and other relevant files.]
