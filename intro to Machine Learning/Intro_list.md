@@ -21,7 +21,7 @@ Supervised learning involves training a model on labeled data, where the input d
 
 Unsupervised learning involves training a model on data without explicit labels. The goal is to find patterns or structures in the data. Common unsupervised algorithms include:
 
-1. **K-Means Clustering**
+1. **[K-Means Clustering](Supervised_vs_Unsupervised/Unsupervised/kmeans.md)**
 2. **Hierarchical Clustering**
 3. **DBSCAN (Density-Based Spatial Clustering of Applications with Noise)**
 4. **Principal Component Analysis (PCA)**
