@@ -146,7 +146,37 @@ Where:
 
 ### Radial Basis Function (RBF) Kernel
 
-[Explain RBF Kernel, its properties, and when to use it.]
+**Definition:** The Radial Basis Function (RBF) kernel, also known as the Gaussian kernel, is a highly versatile and widely used non-linear kernel in SVM. It is defined as:
+
+\( K(x_i, x_j) = e^{-\gamma ||x_i - x_j||^2} \)
+
+Where:
+
+*   \( K(x_i, x_j) \) is the kernel function for input vectors \( x_i \) and \( x_j \).
+*   \( ||x_i - x_j||^2 \) is the squared Euclidean distance between \( x_i \) and \( x_j \).
+*   \( \gamma \) (gamma) is a kernel coefficient (gamma > 0), which controls the influence of a single training example.
+
+**Explanation:**
+
+*   **Non-linear and Infinite-Dimensional Mapping:** The RBF kernel implicitly maps input vectors into an **infinite-dimensional** space. This allows SVM to capture arbitrarily complex non-linear decision boundaries.
+*   **Similarity-Based:** The RBF kernel is a **locality-sensitive** kernel. Its value decreases with distance. For two points \( x_i \) and \( x_j \), if they are close in the input space, \( K(x_i, x_j) \) is close to 1; if they are far apart, \( K(x_i, x_j) \) approaches 0. It measures the "similarity" between two points based on their proximity.
+*   **Gamma Parameter (\( \gamma \)):** Gamma plays a crucial role in the RBF kernel:
+    *   **Small \( \gamma \):**  A small gamma value means a large radius of influence for each support vector. The kernel becomes more similar to a linear kernel, and the decision boundary tends to be smoother and less curved.
+    *   **Large \( \gamma \):** A large gamma value means a small radius of influence. Each support vector has a localized effect. The decision boundary becomes more complex and can capture finer details and non-linearities in the data. Very large gamma values can lead to overfitting.
+
+**When to Use RBF Kernel:**
+
+*   **Non-linear Data:** RBF kernel is excellent for handling non-linear datasets and complex decision boundaries. It's often a good default choice for non-linear SVM classification.
+*   **No Prior Knowledge of Data:** When you don't have prior knowledge about the data's structure and whether it's linearly separable or has a specific polynomial relationship, RBF kernel is a robust option to try.
+*   **Versatility:** It can approximate a wide range of decision boundaries.
+
+**Considerations:**
+
+*   **Hyperparameter Tuning:** RBF kernel has two main hyperparameters: \( \gamma \) (gamma) and \( C \) (regularization parameter). Tuning these parameters, often using cross-validation, is crucial to achieve good performance and avoid overfitting or underfitting.
+*   **Computational Cost:** RBF kernel can be computationally more expensive than linear kernels, especially for very large datasets, due to the complexity of kernel computations.
+*   **Potential for Overfitting:** With very large gamma values or small regularization (large C), RBF kernel SVM can easily overfit the training data. Proper hyperparameter tuning and regularization are essential.
+
+**In summary, the RBF kernel is a powerful and flexible kernel that allows SVM to model highly non-linear decision boundaries by mapping data to an infinite-dimensional space.** It's a popular choice for a wide range of non-linear classification problems, but proper hyperparameter tuning is critical for optimal performance.
 
 ### Sigmoid Kernel
 
