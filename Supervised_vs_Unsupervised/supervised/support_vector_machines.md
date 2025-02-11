@@ -28,23 +28,55 @@ When you give it a new image, SVM analyzes its features and places it on the cor
 
 This example demonstrates SVM's power in handling more complex, real-world classification tasks like image recognition.
 
-**Code Snippet (Python with scikit-learn):**
+**Code Snippet: Image Classification (Cats vs. Dogs) with scikit-learn**
 
 ```python
 from sklearn.svm import SVC
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
 
-# Sample data (feature 1, feature 2, label)
-X = [[2, 2], [3, 2], [1, 4], [5, 6], [6, 5], [4, 4]]
-y = [0, 0, 1, 1, 1, 0] # 0 = class 1, 1 = class 2
+# Sample image features (simplified for demonstration)
+X = [[0.5, 0.6], [0.3, 0.4], [0.8, 0.9], [0.2, 0.3], [0.9, 0.7], [0.4, 0.5]] # Feature 1, Feature 2
+y = [0, 0, 1, 0, 1, 0] # 0 = cat, 1 = dog
 
-# Train the SVM classifier
-model = SVC(kernel='linear') # You can choose different kernels
-model.fit(X, y)
+# Split data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
-# Predict the class for a new data point [3.5, 4]
-prediction = model.predict([[3.5, 4]])
-print(f"Predicted class: {prediction[0]}")
+# Train an SVM classifier with a linear kernel
+linear_svm_model = SVC(kernel='linear')
+linear_svm_model.fit(X_train, y_train)
+
+# Train an SVM classifier with an RBF kernel (for non-linear data)
+rbf_svm_model = SVC(kernel='rbf')
+rbf_svm_model.fit(X_train, y_train)
+
+
+# Make predictions on the test set
+y_pred_linear = linear_svm_model.predict(X_test)
+y_pred_rbf = rbf_svm_model.predict(X_test)
+
+# Evaluate the models' accuracy
+accuracy_linear = accuracy_score(y_test, y_pred_linear)
+accuracy_rbf = accuracy_score(y_test, y_pred_rbf)
+
+print(f"Linear Kernel SVM Accuracy: {accuracy_linear:.2f}")
+print(f"RBF Kernel SVM Accuracy: {accuracy_rbf:.2f}")
+
+# Example prediction for a new image
+new_image_features = [[0.6, 0.6]]
+prediction = linear_svm_model.predict(new_image_features)
+print(f"Predicted class for new image (0=cat, 1=dog): {prediction[0]}")
 ```
+
+**Explanation of the code:**
+
+1.  **Simplified Features:**  `X` now represents simplified image features. In real image classification, you would use much more complex feature extraction methods (e.g., CNN features).
+2.  **Kernel Choice:** The code demonstrates training SVMs with two different kernels:
+    *   `linear`:  For linearly separable data.
+    *   `rbf`: (Radial Basis Function) For non-linearly separable data. Kernels allow SVMs to handle complex boundaries.
+3.  **Model Training & Evaluation:**  We train two SVM models (linear and RBF kernel) and evaluate their accuracy on a test set to compare performance.
+
+This enhanced code snippet illustrates how SVM can be used for image classification and introduces the concept of kernels, which are crucial for SVM's versatility.
 
 **Suggestion:**
 
