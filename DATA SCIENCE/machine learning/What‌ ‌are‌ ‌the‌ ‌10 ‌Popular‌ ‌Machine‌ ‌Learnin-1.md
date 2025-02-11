@@ -14,6 +14,8 @@ Here’s a set of clear, concise notes on each topic with easy-to-understand exp
 
 ### **1. Linear Regression**
 
+[Dive deeper into Linear Regression](./understanding_linear_regression.md)
+
 - **Purpose**: Predicts a continuous output (like prices, temperatures) based on linear relationships between input and output variables.
 - **How it Works**: Fits a straight line (best fit) to minimize the difference between predicted and actual values. It’s represented as \( Y = mX + c \) where \( m \) is the slope and \( c \) is the intercept.
 - **Example**: Predicting house prices based on factors like square footage and number of bedrooms.
