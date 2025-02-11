@@ -60,7 +60,19 @@ Categorical variables can be further divided into different types based on the n
 
 ### Interval and Ratio Variables (Briefly, for completeness)
 
-[Briefly explain interval and ratio variables and why they are generally considered numerical, but can sometimes be treated categorically.]
+**Interval and ratio variables** are primarily **numerical**, representing quantities with meaningful intervals. However, it's worth briefly mentioning them here for completeness and to clarify their distinction from categorical variables.
+
+*   **Interval Variables:** Have ordered categories with meaningful and equal intervals between them, but no true zero point.  Temperature in Celsius or Fahrenheit is a classic example. A 10-degree difference is the same anywhere on the scale, but 0 degrees doesn't mean "no temperature."
+*   **Ratio Variables:**  Similar to interval variables, but they have a true zero point, indicating the absence of the quantity being measured. Examples include height, weight, age, and income. Zero height means no height, zero income means no income.
+
+**Why mention them here?**
+
+While interval and ratio variables are numerical, in some specific contexts, they might be *categorized* or *binned* for certain analyses or modeling techniques. For example:
+
+*   **Age groups:**  Instead of using age as a continuous ratio variable, you might categorize it into age groups (e.g., 0-18, 19-35, 36-55, 56+). In this case, age groups become ordinal categorical variables.
+*   **Income brackets:**  Similar to age, income can be categorized into brackets (e.g., low, medium, high income).
+
+**However, in most machine learning scenarios, interval and ratio variables are treated as numerical variables directly.**  The encoding techniques we'll discuss next are primarily for nominal and ordinal categorical variables.
 
 ## Encoding Techniques for Categorical Variables
 
