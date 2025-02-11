@@ -198,7 +198,31 @@ The probability of being in the "High" category is then derived as \( 1 - P(Y \l
 
 ## Optimization Algorithms
 
-[Briefly discuss optimization algorithms used to minimize the cost function, such as Gradient Descent and Newton's method.]
+To train a logistic regression model, we need to find the parameters (\( \beta \) coefficients) that minimize the Log Loss cost function. This is typically done using optimization algorithms. Here are two common optimization algorithms used for logistic regression:
+
+1.  **Gradient Descent:**
+    *   **Concept:** Gradient Descent is an iterative optimization algorithm used to find the minimum of a function. In the context of logistic regression, it's used to minimize the Log Loss function.
+    *   **How it Works:** It starts with an initial guess for the parameters and iteratively updates them in the direction of the negative gradient of the cost function. The gradient indicates the direction of steepest ascent, so moving in the negative gradient direction leads towards the minimum.
+    *   **Update Rule (for each parameter \( \beta_j \)):** 
+        \( \beta_j := \beta_j - \alpha \frac{\partial J(\beta)}{\partial \beta_j} \)
+        where \( \alpha \) is the learning rate (step size), and \( \frac{\partial J(\beta)}{\partial \beta_j} \) is the partial derivative of the cost function with respect to \( \beta_j \) (the gradient).
+    *   **Variants:** There are different variants of gradient descent, such as Batch Gradient Descent, Stochastic Gradient Descent (SGD), and Mini-Batch Gradient Descent, which vary in how they compute the gradient and update parameters.
+
+2.  **Newton's Method (Newton-Raphson):**
+    *   **Concept:** Newton's method is another iterative optimization algorithm that can converge faster than Gradient Descent in some cases. It uses second-order derivatives (Hessian matrix) to find the minimum.
+    *   **How it Works:** It uses the gradient and the Hessian (matrix of second derivatives) of the cost function to iteratively update the parameters. It generally takes larger steps towards the minimum compared to gradient descent.
+    *   **Update Rule (in vector form):**
+        \( \beta := \beta - H(\beta)^{-1} \nabla J(\beta) \)
+        where \( \nabla J(\beta) \) is the gradient vector, and \( H(\beta)^{-1} \) is the inverse of the Hessian matrix of the cost function.
+    *   **Advantages:** Can converge faster than gradient descent, especially near the minimum, due to its second-order nature.
+    *   **Disadvantages:** Computationally more expensive per iteration than gradient descent because it requires calculating and inverting the Hessian matrix, which can be challenging for very large datasets. It may also be less stable than gradient descent in some cases.
+
+**In Practice:**
+
+*   **Gradient Descent (and its variants) is more commonly used for training logistic regression, especially with large datasets, due to its computational efficiency per iteration.** Libraries like scikit-learn often use efficient variants of gradient descent (e.g., L-BFGS) for optimization in logistic regression.
+*   **Newton's Method, while potentially faster in convergence, is less frequently used in large-scale machine learning due to its computational cost per iteration.** However, it can be useful in certain situations or as a component in hybrid optimization approaches.
+
+Both Gradient Descent and Newton's Method are iterative algorithms that start with an initial guess for the parameters and refine them step-by-step to minimize the Log Loss function, ultimately leading to a trained logistic regression model.
 
 ## Regularization in Logistic Regression
 
