@@ -23,3 +23,8 @@ When a model is overfitted, it becomes too complex and captures random fluctuati
 
 
 ## Get back repo? --> : [https://github.com/3XCeptional/Ml-and-Data-Science-Notes-Notebooks/](https://github.com/3XCeptional/Ml-and-Data-Science-Notes-Notebooks/)
+
+**Suggestion:**
+
+Back to: [Overfitting vs Underfitting](overfitting%20vs%20under%20fitting.md) | 
+Next up: [Random Forests](randomforest.md)
