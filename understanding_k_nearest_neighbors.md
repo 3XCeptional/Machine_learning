@@ -2,7 +2,32 @@
 
 ## What is K-Nearest Neighbors (KNN)?
 
-[Explain K-Nearest Neighbors (KNN) algorithm in detail, expanding on the basic definition from "What are the 10 Popular Machine Learning Algorithms?" file.]
+**K-Nearest Neighbors (KNN)** is a simple yet powerful **supervised machine learning algorithm** used for both **classification** and **regression**. It is a type of **instance-based learning** or **lazy learning** algorithm, meaning it does not learn a discriminative function from the training data but instead memorizes the training dataset.
+
+**Core Idea:**
+
+The core idea behind KNN is that to predict the class or value of a new data point, it looks at the **K-nearest neighbors** in the training dataset and makes a prediction based on the majority class (for classification) or average value (for regression) of these neighbors.
+
+**Key Concepts:**
+
+*   **K Value:**  \( K \) is a hyperparameter that determines the number of neighbors to consider. The choice of \( K \) is crucial and can significantly affect the algorithm's performance.
+*   **Distance Metric:** KNN relies on a distance metric to find the "nearest" neighbors. Common distance metrics include Euclidean distance, Manhattan distance, Minkowski distance, etc. The choice of metric can also impact performance.
+*   **Lazy Learning:** KNN is a lazy learner because it does not have a training phase in the traditional sense. It simply stores the training data and performs computations at the time of prediction.
+*   **Non-parametric:** KNN is a non-parametric algorithm because it does not make assumptions about the underlying data distribution. The model structure is determined from the data.
+
+**KNN in Classification and Regression:**
+
+*   **KNN for Classification:**  To classify a new data point, KNN identifies its \( K \) nearest neighbors in the training set and assigns the class label that is most frequent among these neighbors (majority voting).
+*   **KNN for Regression:** For regression, KNN identifies the \( K \) nearest neighbors and predicts the value for the new data point as the average (or weighted average) of the target values of its neighbors.
+
+**Why KNN is Popular:**
+
+*   **Simplicity:** KNN is easy to understand and implement.
+*   **Versatility:** It can be used for both classification and regression tasks.
+*   **Non-parametric Nature:** No assumptions about data distribution.
+*   **Effective for Multi-modal Data:** Can handle multi-modal data (data with multiple modes or clusters) effectively.
+
+In the following sections, we will delve deeper into how KNN works for classification and regression, distance metrics, choosing the optimal K value, and other important aspects of the KNN algorithm.
 
 ## How KNN Algorithm Works
 
