@@ -54,3 +54,7 @@ We use validation data, which isn't used in model training, to measure a candida
 
 ## Get back repo? --> : [https://github.com/3XCeptional/Ml-and-Data-Science-Notes-Notebooks/](https://github.com/3XCeptional/Ml-and-Data-Science-Notes-Notebooks/)
 
+**Suggestion:**
+
+Next up: [Overfitting in Machine Learning](overfitting.md)
+
