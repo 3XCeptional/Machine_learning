@@ -257,7 +257,100 @@ In practice, it's often recommended to consider multiple evaluation metrics to g
 
 ## Implementation and Examples
 
-[Provide Python code examples using scikit-learn to implement Linear Regression. Potentially link to or incorporate content from `Supervised_vs_Unsupervised/supervised/linear regression.md`.]
+Linear Regression is straightforward to implement in Python using libraries like scikit-learn. Here are examples of Simple and Multiple Linear Regression implementation.
+
+**1. Simple Linear Regression Example:**
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, r2_score
+
+# Sample Data
+X = np.array([1, 2, 3, 4, 5]).reshape((-1, 1))  # Independent variable (e.g., Study Hours)
+y = np.array([2, 4, 5, 4, 5])  # Dependent variable (e.g., Exam Scores)
+
+# Model Training
+model = LinearRegression()
+model.fit(X, y)
+
+# Predictions
+y_predicted = model.predict(X)
+
+# Evaluation
+mse = mean_squared_error(y, y_predicted)
+r2 = r2_score(y, y_predicted)
+
+print("Simple Linear Regression Model:")
+print(f"Coefficient (Slope): {model.coef_[0]:.2f}")
+print(f"Intercept: {model.intercept_:.2f}")
+print(f"Mean Squared Error (MSE): {mse:.2f}")
+print(f"R-squared: {r2:.2f}")
+
+# Plotting the regression line
+plt.scatter(X, y, color='blue', label='Actual data')
+plt.plot(X, y_predicted, color='red', label='Regression line')
+plt.xlabel('Independent Variable (X)')
+plt.ylabel('Dependent Variable (Y)')
+plt.title('Simple Linear Regression')
+plt.legend()
+plt.show()
+```
+
+**2. Multiple Linear Regression Example:**
+
+```python
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error, r2_score
+
+# Sample Data - DataFrame
+data = pd.DataFrame({
+    'Feature1': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    'Feature2': [2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+    'Target':   [3, 5, 7, 9, 11, 13, 15, 17, 19, 21]
+})
+
+# Features (Independent Variables) and Target (Dependent Variable)
+X = data[['Feature1', 'Feature2']]
+y = data['Target']
+
+# Split data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0)
+
+# Model Training
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# Predictions
+y_predicted = model.predict(X_test)
+
+# Evaluation
+mse = mean_squared_error(y_test, y_predicted)
+r2 = r2_score(y_test, y_predicted)
+
+print("\nMultiple Linear Regression Model:")
+print(f"Coefficients (Slopes): {model.coef_}")
+print(f"Intercept: {model.intercept_:.2f}")
+print(f"Mean Squared Error (MSE): {mse:.2f}")
+print(f"R-squared: {r2:.2f}")
+
+# Note: For higher dimensional data, visualization of regression plane is complex.
+```
+
+**Explanation:**
+
+*   **Scikit-learn:** Both examples use `LinearRegression` from `sklearn.linear_model`.
+*   **Model Fitting:** `model.fit(X, y)` trains the linear regression model using the independent variables `X` and dependent variable `y`.
+*   **Predictions:** `model.predict(X)` is used to make predictions.
+*   **Evaluation:** `mean_squared_error` and `r2_score` from `sklearn.metrics` are used to evaluate the model's performance.
+*   **Visualization (Simple Linear Regression):** The first example includes code to plot the regression line for simple linear regression.
+
+**Further Exploration:**
+
+For more practical examples and potentially more in-depth code implementations, you can also refer to [`Supervised_vs_Unsupervised/supervised/linear regression.md`](./Supervised_vs_Unsupervised/supervised/linear regression.md). This file might contain additional examples or different datasets for linear regression.
 
 ## Advantages and Disadvantages of Linear Regression
 
