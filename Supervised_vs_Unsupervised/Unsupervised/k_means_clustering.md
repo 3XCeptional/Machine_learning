@@ -85,7 +85,7 @@ This enhanced code snippet provides a visual and interactive way to understand K
 
 **Suggestion:**
 
-[Next Page Placeholder]
+Back to: [List of Algorithms](intro%20to%20Machine%20Learning/Intro_list.md)
 
 ---
 
