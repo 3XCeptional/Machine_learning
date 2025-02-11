@@ -85,7 +85,47 @@ The threshold of 0.5 can be adjusted depending on the specific problem and the d
 
 ### Multinomial Logistic Regression
 
-[Explain Multinomial Logistic Regression for multi-class classification problems.]
+**Multinomial Logistic Regression**, also known as **Softmax Regression**, is used when you need to classify instances into **more than two classes**. Unlike binary logistic regression, multinomial logistic regression handles **multi-class classification** problems where the classes are **nominal** (i.e., no inherent order).
+
+**Key Characteristics:**
+
+*   **More than Two Classes:** Designed for problems with three or more mutually exclusive classes.
+*   **Nominal Classes:** The classes have no inherent order or ranking (e.g., types of fruits, colors, categories of news articles).
+*   **Probability Distribution over Classes:** It outputs a probability distribution over all possible classes, indicating the likelihood of an instance belonging to each class.
+
+**Mathematical Formulation (using Softmax Function):**
+
+Multinomial logistic regression uses the **Softmax function** to generalize logistic regression to multiple classes. For \( K \) classes, the probability that an input \( X \) belongs to class \( k \) is given by:
+
+\( P(Y=k|X) = \frac{e^{z_k}}{\sum_{j=1}^{K} e^{z_j}} \)  for \( k = 1, 2, ..., K \)
+
+Where:
+
+*   \( P(Y=k|X) \) is the probability that the output \( Y \) is class \( k \) given input \( X \).
+*   \( K \) is the total number of classes.
+*   \( z_k = \beta_{k0} + \beta_{k1} X_1 + ... + \beta_{kn} X_n \) is the linear predictor for class \( k \). It's a linear combination of the independent variables \( X_1, ..., X_n \) and class-specific coefficients \( \beta_{k0}, \beta_{k1}, ..., \beta_{kn} \).
+*   The denominator \( \sum_{j=1}^{K} e^{z_j} \) ensures that the probabilities over all classes sum to 1, creating a valid probability distribution.
+
+**Explanation:**
+
+*   **Softmax Function:** The softmax function generalizes the sigmoid function to multiple classes. It converts a vector of scores (linear predictors \( z_1, z_2, ..., z_K \)) into a probability distribution.
+*   **Class-Specific Coefficients:** For each class \( k \), there is a set of coefficients \( \beta_{k0}, \beta_{k1}, ..., \beta_{kn} \). This allows the model to learn class-specific relationships with the independent variables.
+*   **Probability Distribution:** The output is a vector of probabilities, one for each class, summing to 1. The class with the highest probability is typically chosen as the predicted class.
+
+**Examples:**
+
+*   **Classifying Types of Fruits:** Classifying fruits into categories like "Apple", "Banana", "Orange" based on features like size, color, and texture.
+*   **News Article Categorization:** Categorizing news articles into topics like "Politics", "Sports", "Technology", "Entertainment".
+*   **Image Classification (Multi-class):** Classifying images into categories like "Cat", "Dog", "Bird", "Fish".
+*   **Handwritten Digit Recognition:** Classifying handwritten digits (0-9), which involves 10 classes.
+
+**Decision Rule:**
+
+In multinomial logistic regression, the predicted class is typically the one with the highest probability:
+
+Predicted Class = \( \underset{k}{\operatorname{argmax}} \ P(Y=k|X) \)
+
+**In summary, multinomial logistic regression extends the capabilities of logistic regression to handle classification problems with more than two nominal classes.** It uses the softmax function to estimate probabilities for each class and is suitable for multi-class classification tasks where classes have no inherent order.
 
 ### Ordinal Logistic Regression
 
