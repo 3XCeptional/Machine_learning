@@ -70,11 +70,51 @@ To predict the price of a new house, you'd start at the root, check its "size". 
 
 ## Splitting Criteria in Decision Trees
 
-[Explain different splitting criteria used in Decision Trees for node splitting:]
+A crucial aspect of building decision trees is choosing the "best" feature and split point at each internal node. "Best" is defined based on splitting criteria that aim to create child nodes that are purer than the parent node with respect to the target variable. For classification trees, the most common splitting criteria are **Entropy** and **Gini Impurity**.
 
 ### Entropy and Information Gain (for Classification)
 
-[Explain Entropy and Information Gain and how they are used to choose splits in classification trees.]
+**Entropy:**
+
+*   **Definition:** Entropy is a measure of **impurity or disorder** in a set of data points. In the context of classification trees, it measures the impurity of class labels within a node. Entropy is 0 if all data points in a node belong to the same class (perfectly pure), and it is maximum when classes are equally distributed (maximum impurity).
+*   **Formula:** For a node \( N \) with data points belonging to \( C \) classes, the entropy \( H(N) \) is calculated as:
+
+    \( H(N) = - \sum_{c=1}^{C} p_c \log_2(p_c) \)
+
+    Where:
+    *   \( H(N) \) is the entropy of node \( N \).
+    *   \( C \) is the number of classes.
+    *   \( p_c \) is the proportion of data points in node \( N \) that belong to class \( c \).
+    *   \( \log_2 \) is the logarithm base 2.
+
+**Information Gain:**
+
+*   **Definition:** Information Gain (IG) measures the **reduction in entropy** achieved after splitting a node based on a feature. It quantifies how much "information" a feature provides about the class label.
+*   **Calculation:** Information Gain for a split at node \( N \) using feature \( F \) is calculated as:
+
+    \( IG(N, F) = H(N) - \sum_{v \in \text{Values}(F)} \frac{|N_v|}{|N|} H(N_v) \)
+
+    Where:
+    *   \( IG(N, F) \) is the Information Gain for splitting node \( N \) using feature \( F \).
+    *   \( H(N) \) is the entropy of the parent node \( N \).
+    *   \( \text{Values}(F) \) is the set of possible values for feature \( F \).
+    *   \( N_v \) is the child node created by splitting node \( N \) based on value \( v \) of feature \( F \).
+    *   \( |N| \) and \( |N_v| \) are the number of data points in node \( N \) and child node \( N_v \), respectively.
+    *   \( H(N_v) \) is the entropy of child node \( N_v \).
+
+**How Entropy and Information Gain are Used for Splitting:**
+
+1.  **Feature Selection:** For each internal node, the decision tree algorithm iterates through all possible features and all possible split points for each feature.
+2.  **Calculate Information Gain for Each Split:** For each potential split (feature and split point), calculate the Information Gain. This involves:
+    *   Calculating the entropy of the current node (parent node).
+    *   Splitting the data into child nodes based on the split.
+    *   Calculating the entropy of each child node.
+    *   Calculating the weighted average entropy of the child nodes.
+    *   Subtracting the weighted average child node entropy from the parent node entropy to get Information Gain.
+3.  **Choose the Best Split:** Select the feature and split point that yield the **highest Information Gain**. This split is considered the "best" because it results in the largest reduction in impurity (entropy) and thus the most informative split for classification.
+4.  **Recursive Splitting:** Repeat this process recursively for each child node until a stopping criterion is met (e.g., nodes become pure, minimum samples per node, maximum tree depth).
+
+**In summary, Entropy and Information Gain are used to greedily select the best feature and split point at each node in a classification tree.** The goal is to create splits that maximize Information Gain, which effectively means creating child nodes that are increasingly purer in terms of class distribution, leading to effective classification.
 
 ### Gini Impurity (for Classification)
 
