@@ -28,7 +28,7 @@ print(f"Will the student pass? (1=Yes, 0=No): {prediction[0]}")
 
 **Suggestion:**
 
-[Next Page Placeholder]
+Next up: [Support Vector Machines (SVM)](support_vector_machines.md)
 
 ---
 
