@@ -34,7 +34,7 @@
 
 ### Deep Learning
 
-Deep learning is a subset of machine learning that uses neural networks with multiple layers (deep architectures) to model complex patterns in large datasets. Common deep learning architectures include:
+**Deep learning** is a more advanced area within machine learning, inspired by the structure of the human brain. It uses deep neural networks with many layers to learn very complex patterns from vast amounts of data. Deep learning excels in tasks like image and speech recognition, natural language processing, and complex data analysis. Common deep learning architectures include:
 
 - **Artificial Neural Networks (ANN)**
 - **Convolutional Neural Networks (CNN)**
