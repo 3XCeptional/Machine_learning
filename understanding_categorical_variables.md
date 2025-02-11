@@ -76,9 +76,37 @@ While interval and ratio variables are numerical, in some specific contexts, the
 
 ## Encoding Techniques for Categorical Variables
 
+Categorical variables, especially nominal and ordinal ones, cannot be directly used in most machine learning algorithms. They need to be converted into a numerical format. This process is called **categorical encoding**. Let's explore some common techniques:
+
 ### Ordinal Encoding
 
-[Briefly describe ordinal encoding, referencing the practical example in `categorical variables.md`.]
+**Ordinal encoding** is used for **ordinal categorical variables**. It replaces each category with a numerical value based on its order. The numerical values typically range from 0 to n-1, where n is the number of unique categories. The order of these numbers reflects the inherent order of the categories.
+
+**Key points about Ordinal Encoding:**
+
+*   **Preserves Order:**  Crucially, it maintains the order of ordinal categories.
+*   **Suitable for Ordinal Data:**  Well-suited for variables where order is meaningful (e.g., education level, satisfaction ratings).
+*   **Example:**
+    *   Consider "Education Level":  Elementary School, High School, Bachelor's, Master's, PhD.
+    *   Ordinal Encoding might map them as:
+        *   Elementary School: 0
+        *   High School: 1
+        *   Bachelor's: 2
+        *   Master's: 3
+        *   PhD: 4
+
+*   **Practical Example:**  As seen in the [`categorical variables.md`](./categorical variables.md) file, scikit-learn's `OrdinalEncoder` can be used to implement this.
+
+**When to use Ordinal Encoding:**
+
+*   When dealing with ordinal categorical variables.
+*   When the number of categories is relatively small.
+*   When you want to preserve the order information in your data.
+
+**Limitations:**
+
+*   Not suitable for nominal categorical variables because it implies an order that doesn't exist.
+*   The numerical values assigned are arbitrary; the intervals between them are not meaningful.
 
 ### One-Hot Encoding
 
