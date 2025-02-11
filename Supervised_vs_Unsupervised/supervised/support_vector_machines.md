@@ -80,7 +80,7 @@ This enhanced code snippet illustrates how SVM can be used for image classificat
 
 **Suggestion:**
 
-[Next Page Placeholder]
+Next up: [Random Forests](random_forests.md)
 
 ---
 
