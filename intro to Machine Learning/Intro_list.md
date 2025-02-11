@@ -1,6 +1,6 @@
 ### Supervised Machine Learning Algorithms
 
-Supervised learning involves training a model on labeled data, where the input data and corresponding output labels are provided. The algorithm learns to map inputs to outputs and makes predictions on unseen data. Common supervised algorithms include:
+**Supervised learning** is like learning with a teacher. You give the algorithm labeled examples (input-output pairs), and it learns to predict outputs for new, unseen inputs based on this labeled data. It's used for tasks like classification and regression, where the goal is to predict a category or a continuous value. Common supervised algorithms include:
 
 1. **[Linear Regression](Supervised_vs_Unsupervised/supervised/linear regression.md)**
 2. **[Logistic Regression](Supervised_vs_Unsupervised/supervised/logistic_regression.md)**
