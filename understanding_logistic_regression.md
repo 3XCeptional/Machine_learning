@@ -12,7 +12,37 @@ The **Logistic Function**, also known as the **Sigmoid Function**, is at the hea
 
 The sigmoid function is mathematically defined as:
 
-\( \sigma(z) = \frac{1}{1 + e^{-z}} \)
+\( L(y_i, p(X_i)) = -[y_i \log(p(X_i)) + (1 - y_i) \log(1 - p(X_i))] \)
+
+Where:
+
+*   \( L(y_i, p(X_i)) \) is the Log Loss for the \( i^{th} \) training example.
+*   \( y_i \) is the true class label for the \( i^{th} \) example (either 0 or 1).
+*   \( p(X_i) \) is the predicted probability of class 1 for the \( i^{th} \) example, given by the logistic regression model.
+*   \( \log \) is the natural logarithm.
+
+**For the entire training dataset of \( n \) examples, the total Log Loss is the average over all examples:**
+
+\( J(\beta) = -\frac{1}{n} \sum_{i=1}^{n} [y_i \log(p(X_i)) + (1 - y_i) \log(1 - p(X_i))] \)
+
+Where \( J(\beta) \) represents the cost function that we aim to minimize to find the optimal coefficients \( \beta \).
+
+**Interpretation of Log Loss:**
+
+*   **Loss for Correct Predictions:** 
+    *   If the true class is 1 (\( y_i = 1 \)) and the predicted probability \( p(X_i) \) is close to 1, the term \( -y_i \log(p(X_i)) \) is close to 0 (low loss).
+    *   If the true class is 0 (\( y_i = 0 \)) and the predicted probability \( p(X_i) \) is close to 0 (meaning \( 1 - p(X_i) \) is close to 1), the term \( -(1 - y_i) \log(1 - p(X_i)) \) is close to 0 (low loss).
+*   **Loss for Incorrect Predictions:**
+    *   If the true class is 1 (\( y_i = 1 \)) but the predicted probability \( p(X_i) \) is close to 0, the term \( -y_i \log(p(X_i)) \) becomes very large (high loss).
+    *   If the true class is 0 (\( y_i = 0 \)) but the predicted probability \( p(X_i) \) is close to 1, the term \( -(1 - y_i) \log(1 - p(X_i)) \) becomes very large (high loss).
+
+**Minimizing Log Loss:**
+
+The goal in training a logistic regression model is to find the parameters \( \beta \) that minimize the Log Loss function \( J(\beta) \). Optimization algorithms like Gradient Descent are used to iteratively adjust the parameters to find the minimum value of the Log Loss, thus improving the model's ability to predict probabilities accurately.
+
+**In summary, Log Loss (Cross-Entropy) is a crucial cost function for logistic regression because it effectively quantifies the error in probability predictions and guides the model training process to find parameters that yield accurate and reliable probability estimates for binary classification tasks.**
+
+## Optimization Algorithms \sigma(z) = \frac{1}{1 + e^{-z}} \)
 
 Where:
 
