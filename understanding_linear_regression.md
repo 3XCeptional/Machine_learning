@@ -135,7 +135,45 @@ Where:
 
 ### Polynomial Regression
 
-[Explain Polynomial Regression and when it's used.]
+**Polynomial Regression** is a form of regression analysis in which the relationship between the independent variable(s) and the dependent variable is modeled as an \( n^{th} \) degree polynomial. Polynomial regression is used when the relationship between variables is **non-linear**. It essentially curves the line (or hyperplane) that you're fitting to the data.
+
+**Mathematical Formulation:**
+
+For a single independent variable, the polynomial regression equation is:
+
+\( Y = \beta_0 + \beta_1 X + \beta_2 X^2 + ... + \beta_d X^d + \epsilon \)
+
+Where:
+
+*   \( Y \) is the dependent variable.
+*   \( X \) is the independent variable.
+*   \( \beta_0, \beta_1, \beta_2, ..., \beta_d \) are the coefficients.
+*   \( d \) is the degree of the polynomial.
+*   \( \epsilon \) is the error term.
+
+**Explanation:**
+
+*   **Non-linear Relationships:** Polynomial regression is used when a straight line (as in simple and multiple linear regression) does not adequately capture the relationship between the variables. It can model curved relationships.
+*   **Curved Fit:** By adding polynomial terms (like \( X^2, X^3 \), etc.), the model can fit curves to the data. The degree of the polynomial (\( d \)) determines the complexity of the curve. A higher degree allows for more complex curves.
+*   **Still Linear in Coefficients:** It's important to note that while polynomial regression models non-linear relationships, it is still considered "linear" regression in terms of its coefficients (\( \beta \)s). The regression coefficients are linear, even though the predictors are polynomial terms of the original variables.
+
+**Examples:**
+
+*   **Modeling growth rate of plants over time:** The growth rate might initially increase rapidly, then slow down and potentially decrease. A polynomial regression can fit this S-shaped curve better than a straight line.
+*   **Describing the relationship between speed and fuel efficiency of a vehicle:** Fuel efficiency might increase with speed up to a point, and then decrease at higher speeds due to air resistance. Polynomial regression can model this inverted U-shaped relationship.
+*   **Analyzing dose-response relationships in pharmacology:** The effect of a drug dose might not be linear. Polynomial regression can model scenarios where the effect increases with dose up to a certain point, and then plateaus or decreases.
+
+**When to Use Polynomial Regression:**
+
+*   When scatter plots or prior knowledge suggests a non-linear relationship between variables.
+*   When simple or multiple linear regression models are underfitting the data (i.e., not capturing the complexity of the relationship).
+*   For exploratory analysis to understand potential non-linear trends.
+
+**Considerations:**
+
+*   **Overfitting:** High-degree polynomial regression can easily overfit the training data, leading to poor generalization to new data. It's crucial to use techniques like cross-validation and regularization to prevent overfitting.
+*   **Interpretability:** As the degree of the polynomial increases, the model becomes less interpretable. It can be harder to explain the meaning of higher-order polynomial terms.
+*   **Feature Scaling:** Polynomial features can have a wide range of values, so feature scaling (e.g., standardization or normalization) is often important.
 
 ## Assumptions of Linear Regression
 
